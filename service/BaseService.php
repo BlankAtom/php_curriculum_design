@@ -9,14 +9,12 @@ class BaseService {
 
     public function __construct()
     {
-        echo "BaseService __Construct";
     }
-
-
     protected function connect($host, $user, $pwd, $dbname){
         $conn = mysqli_connect($host, $user, $pwd, $dbname, 3306);
         if( $conn == false ){
             echo "connect error  ";
+
         }
         $this->conn = $conn;
     }
@@ -28,5 +26,11 @@ class BaseService {
 
     protected function close() {
         mysqli_close($this->conn);
+    }
+    /**
+     * 连接数据库
+     */
+    protected function connectDatabase(){
+        $this->connect($this->host, $this->user, $this->pwd, $this->database);
     }
 }

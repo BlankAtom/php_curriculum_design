@@ -2,10 +2,6 @@
 
 
 class StudentMapper{
-    public string $queryAll_Sql = "select * from student.student";
-
-    public function __construct()
-    {
-        echo " Mapper<br>";
-    }
+    public array $column_name = ["sno", "cno", "id_card"];
+    public array $sql = ["queryAll" => "select * from student.student"];
 }

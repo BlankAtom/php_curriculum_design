@@ -15,28 +15,18 @@ class StudentService extends BaseService {
     public function queryAll(): array
     {
         $this->connectDatabase();
-        $row = $this->query($this->studentMapper->queryAll_Sql);
+        $row = $this->query($this->studentMapper->sql["queryAll"]);
         $data = array();
         foreach ( $row as $item) {
-            $stu = new Student($item["sno"], $item["sname"], $item["idcard"]);
+            $stu = new Student(
+                $item[$this->studentMapper->column_name[0]],
+                $item[$this->studentMapper->column_name[1]],
+                $item[$this->studentMapper->column_name[2]]
+            );
             $data[] = $stu;
         }
         $this->close();;
         return $data;
     }
 
-//    /**
-//     * @return mixed
-//     */
-//    public function querySCG(): array
-//    {
-////        $this->connect();
-//    }
-
-    /**
-     * 连接数据库
-     */
-    protected function connectDatabase(){
-        $this->connect($this->host, $this->user, $this->pwd, $this->database);
-    }
 }
