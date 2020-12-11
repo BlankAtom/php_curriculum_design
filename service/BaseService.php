@@ -2,6 +2,15 @@
 
 class BaseService {
     protected $conn;
+    protected string $host = "localhost";
+    protected string $user = "root";
+    protected string $pwd = "123456";
+    protected string $database = "student";
+
+    public function __construct()
+    {
+        echo "BaseService __Construct";
+    }
 
 
     protected function connect($host, $user, $pwd, $dbname){
