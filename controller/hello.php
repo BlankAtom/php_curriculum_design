@@ -1,5 +1,5 @@
 <?php
-include ("service/StudentService.php");
+include ("../service/StudentService.php");
 //require_once ("../service/StudentService.php");
 require_once ("Controller.php");
 

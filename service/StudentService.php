@@ -1,8 +1,8 @@
 <?php
 //namespace service;
-require_once ("pojo/Student.php");
-include_once ("service/BaseService.php");
-require_once ("mapper/StudentMapper.php");
+require_once ("../pojo/Student.php");
+include_once ("../service/BaseService.php");
+require_once ("../mapper/StudentMapper.php");
 
 class StudentService extends BaseService {
     private StudentMapper $studentMapper ;

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function clickDo() {
+            if(window.XMLHttpRequest) {
+                let res = document.getElementById("text");
+                let xmlhttp;
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("get", "/api/index.php/info/getStudentGradeList", true);
+                xmlhttp.send();
+                //4、事件绑定，处理服务端返回的结果
+                //readystate 是xhr中的属性，表示状态，0，1，2，3，4，5
+                xmlhttp.onreadystatechange = function(){
+                    //判断（服务端返回了所有的结果）
+                    if( xmlhttp.readyState === 4 ){
+                        //判断响应状态码 200 404 403 401 500
+                        // 2xx 成功
+                        if( xmlhttp.status >= 200 && xmlhttp.status < 300){
+                            //处理结果
+                            //响应
+                            console.log(xmlhttp.status);//响应状态码
+                            console.log(xmlhttp.statusText);//状态字符串
+                            console.log(xmlhttp.getAllResponseHeaders());//所有的响应头
+                            console.log(xmlhttp.response);//响应体
+                            // xmlhttp.innerHTML = xmlhttp.response;
+                            let data = JSON.parse(xmlhttp.response);
+                            res.innerText = data[0];
+
+                        }
+                        else{
+
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<button name="Do" onclick="clickDo()">Do</button>
+<div id="text">
+
+</div>
+</body>
+</html>
